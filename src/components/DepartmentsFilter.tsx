@@ -8,9 +8,9 @@ export const DepartmentsFilter = (): JSX.Element => {
     event.preventDefault();
     const filter = event.target.dataset.filter;
     if (filter === "all") {
-      dispatch(sortFilterActions.resetFilters());
+      dispatch(sortFilterActions.resetDepartmentFilter());
     } else {
-      dispatch(sortFilterActions.setFilters(filter));
+      dispatch(sortFilterActions.setDepartmentFilter(filter));
     }
   };
 

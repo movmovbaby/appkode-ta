@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { SortType } from "../store/sortFilterReducer";
 import { sortFilterActions } from "../store/sortFilterReducer";
 import { useAppDispatch } from "../store/hooks";
 

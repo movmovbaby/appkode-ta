@@ -2,7 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type SortType = "alphabet" | "birth-day";
 
-export type FilterType =
+export type InputFilterType = string;
+
+export type DepartmentFilterType =
   | "android"
   | "ios"
   | "design"
@@ -10,13 +12,15 @@ export type FilterType =
   | "analytics";
 
 interface SortFilterState {
-  filter: FilterType | null;
   sort: SortType;
+  departmentFilter: DepartmentFilterType | null;
+  inputFilter: InputFilterType | null;
 }
 
 const initialState: SortFilterState = {
   sort: "alphabet",
-  filter: null,
+  departmentFilter: null,
+  inputFilter: null,
 };
 
 const sortFilterSlice = createSlice({
@@ -27,12 +31,16 @@ const sortFilterSlice = createSlice({
       console.log("sort action", action);
       state.sort = action.payload;
     },
-    setFilters(state, action: PayloadAction<FilterType>) {
-      console.log("filter action", action);
-      state.filter = action.payload;
+    setDepartmentFilter(state, action: PayloadAction<DepartmentFilterType>) {
+      console.log("department filter action", action);
+      state.departmentFilter = action.payload;
     },
-    resetFilters(state) {
-      state.filter = null;
+    resetDepartmentFilter(state) {
+      state.departmentFilter = null;
+    },
+    setInputFilter(state, action: PayloadAction<InputFilterType>) {
+      console.log("input filter action");
+      state.inputFilter = action.payload;
     },
   },
 });
