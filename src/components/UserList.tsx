@@ -15,14 +15,14 @@ export const UserList = (): JSX.Element => {
    * взять сортировку из стора -  слайс +
    * взять фильтр по департаменту из стора -  слайс +
    * отфильтровать по департаменту - в один проход + useMemo +
-   * отсортировать - в один проход + useMemo +
    * отфильтровывать по введенным в инпут данным: имя фамилия никнейм - слайс +
+   * отсортировать - в один проход + useMemo +
    * отобразить
    * =====================
    * выделить компоненты элементов списка, пропсами передавать тип сортировки для изменения отображения +
    * отсортировать по дате как указано в задании +
    */
-  const { data, error, isLoading } = useGetUsersQuery(dynamicUsers);
+  const { data: users, error, isLoading } = useGetUsersQuery(dynamicUsers);
 
   const { inputFilter, departmentFilter, sort } = useAppSelector(
     (state) => state.sortAndFilter
@@ -30,8 +30,8 @@ export const UserList = (): JSX.Element => {
 
   const filtredUsersObject = useMemo((): usersObjectType => {
     const departmentFiltered = !departmentFilter
-      ? data
-      : data?.filter((user) => user.department === departmentFilter);
+      ? users
+      : users?.filter((user) => user.department === departmentFilter);
 
     const inputFiltred = !inputFilter
       ? departmentFiltered
@@ -62,13 +62,13 @@ export const UserList = (): JSX.Element => {
       const userObject: usersObjectType = birthdaySort(sortedUsers);
       return userObject;
     }
-  }, [data, departmentFilter, inputFilter, sort]);
+  }, [users, departmentFilter, inputFilter, sort]);
 
   if (error) {
     return <CriticalError />;
   }
 
-  if (isLoading || !data) {
+  if (isLoading || !users) {
     return <Spinner />;
   }
 
@@ -79,19 +79,25 @@ export const UserList = (): JSX.Element => {
     return <UsersNotFound />;
   }
 
+  const today = new Date();
+  const nextYear = today.getFullYear() + 1;
   return (
     <>
       <ul>
         {filtredUsersObject.currentYear.map((user) => (
-          <UserItem user={user} sort={sort} />
+          <li key={user.id}>
+            <UserItem user={user} sort={sort} />
+          </li>
         ))}
       </ul>
       {filtredUsersObject.nextYear.length === 0 ? null : (
         <>
-          <p>2024</p>
+          <p>{nextYear}</p>
           <ul>
             {filtredUsersObject.nextYear.map((user) => (
-              <UserItem user={user} sort={sort} />
+              <li key={user.id}>
+                <UserItem user={user} sort={sort} />
+              </li>
             ))}
           </ul>
         </>

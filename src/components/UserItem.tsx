@@ -1,6 +1,7 @@
+import { Link, useNavigate } from "react-router-dom";
 import type { User } from "../types";
 import type { SortType } from "../store/sortFilterReducer";
-import { formatBirthday } from "../utils";
+import { shortFormatBirthday } from "../utils";
 
 interface UserItemProps {
   user: User;
@@ -8,21 +9,24 @@ interface UserItemProps {
 }
 
 export const UserItem = ({ user, sort }: UserItemProps) => {
+  const navigate = useNavigate();
   return (
     <>
-      <img src={user.avatarUrl} alt="user avatar" />
-      <div>
-        <span>{`${user.firstName} ${user.lastName}`}</span>
-      </div>
-      <small>{user.userTag}</small>
-      <div>
-        <span>{user.department}</span>
-      </div>
-      {sort === "birth-day" ? (
-        <p>
-          <span>{formatBirthday(user.birthday)}</span>
-        </p>
-      ) : null}
+      <Link to={`/users/${user.id}`} onClick={() => navigate("/")}>
+        <img src={user.avatarUrl} alt="user avatar" />
+        <div>
+          <span>{`${user.firstName} ${user.lastName}`}</span>
+        </div>
+        <small>{user.userTag}</small>
+        <div>
+          <span>{user.department}</span>
+        </div>
+        {sort === "birth-day" ? (
+          <p>
+            <span>{shortFormatBirthday(user.birthday)}</span>
+          </p>
+        ) : null}
+      </Link>
     </>
   );
 };

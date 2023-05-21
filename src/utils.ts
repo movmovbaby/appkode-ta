@@ -1,6 +1,6 @@
 import type { User } from "./types";
 
-export const formatBirthday = (birthDay: string) => {
+export const shortFormatBirthday = (birthDay: string): string => {
   const map = new Map<number, string>([
     [1, "янв"],
     [2, "фев"],
@@ -19,6 +19,60 @@ export const formatBirthday = (birthDay: string) => {
   const [_, month, day] = birthDay.split("-");
 
   return `${day} ${map.get(parseInt(month))}`;
+};
+
+export const fullFormatBirthday = (birthDay: string): string => {
+  const map = new Map<number, string>([
+    [1, "января"],
+    [2, "февраля"],
+    [3, "марта"],
+    [4, "апреля"],
+    [5, "мая"],
+    [6, "июня"],
+    [7, "июля"],
+    [8, "августа"],
+    [9, "сентября"],
+    [10, "октября"],
+    [11, "ноября"],
+    [12, "декабря"],
+  ]);
+
+  const [year, month, day] = birthDay.split("-");
+
+  return `${day} ${map.get(parseInt(month))} ${year}`;
+};
+
+const getDiffYear = (birthday: string): number => {
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  const currentMonth = today.getMonth();
+
+  const [y, m, _] = birthday.split("-");
+  const birthYear = parseInt(y);
+  const birthMonth = parseInt(m) + 1; // getMonth считает месяцы с нуля
+
+  let diffYears = currentYear - birthYear;
+
+  if (birthMonth > currentMonth) {
+    diffYears -= 1;
+  }
+
+  return diffYears;
+};
+
+export const getFullYearAge = (birthday: string): string => {
+  const age = getDiffYear(birthday);
+
+  const units = age % 10;
+  let fullYearAge = "";
+  if (units === 1) {
+    fullYearAge = `${age} год`;
+  } else if (units > 1 && units < 5) {
+    fullYearAge = `${age} года`;
+  } else {
+    fullYearAge = `${age} лет`;
+  }
+  return fullYearAge;
 };
 
 export type usersObjectType = {
