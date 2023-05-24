@@ -3,19 +3,19 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider as StoreProvider } from "react-redux";
 import { store } from "./store";
-import App from "./App";
-import { User } from "./pages/User";
+import { MainPage } from "./pages/MainPage";
+import { UserPage } from "./pages/UserPage/UserPage";
 
 import "./index.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <MainPage />,
   },
   {
     path: "/users/:userId",
-    element: <User />,
+    element: <UserPage />,
   },
 ]);
 

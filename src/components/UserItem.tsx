@@ -13,7 +13,7 @@ export const UserItem = ({ user, sort }: UserItemProps) => {
   return (
     <>
       <Link to={`/users/${user.id}`} onClick={() => navigate("/")}>
-        <img src={user.avatarUrl} alt="user avatar" />
+        <img src={user.avatarUrl} alt="user avatar" height="72" width="72" />
         <div>
           <span>{`${user.firstName} ${user.lastName}`}</span>
         </div>
