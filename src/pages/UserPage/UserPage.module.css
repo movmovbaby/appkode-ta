@@ -75,7 +75,7 @@
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  padding-top: 10px;
+  padding-top: 6px;
 }
 
 .age {
@@ -90,6 +90,12 @@
 
 .birthday {
   margin-right: auto;
+}
+
+.years {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .phone-container {

@@ -59,7 +59,7 @@ export const UserPage = () => {
         <div className={`${styles.wrapper} ${styles["bg-color-white"]}`}>
           <div className={styles.details}>
             <div className={styles.age}>
-              <span className={styles.icon}>
+              <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="21"
@@ -73,10 +73,10 @@ export const UserPage = () => {
                 </svg>
               </span>
               <span className={styles.birthday}>{birthday}</span>
-              <span>{age}</span>
+              <span className={styles.years}>{age}</span>
             </div>
             <div className={styles["phone-container"]}>
-              <span className={styles.icon}>
+              <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="21"
