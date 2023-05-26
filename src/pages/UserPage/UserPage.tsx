@@ -8,7 +8,7 @@ import styles from "./UserPage.module.css";
 
 export const UserPage = () => {
   const { userId } = useParams<string>();
-  const { data: users, error, isLoading } = useGetUsersQuery(dynamicUsers);
+  const { data: users } = useGetUsersQuery(allUsers);
 
   // const { data: users } =
   //   usersApi.endpoints.getUsers.useQueryState(dynamicUsers);

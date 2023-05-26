@@ -18,7 +18,7 @@ interface SortFilterState {
 }
 
 const initialState: SortFilterState = {
-  sort: "alphabet",
+  sort: "birth-day",
   departmentFilter: null,
   inputFilter: null,
 };

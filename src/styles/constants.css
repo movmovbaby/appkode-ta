@@ -1,8 +1,12 @@
 :root {
+  --main-area-width: 1280px;
+  --main-area-padding: 16px;
   --text-primary: #050510;
   --text-secondary: #55555C;
   --text-tetriary: #97979B;
-
+  --content-secondary: #C3C3C6;
+  --bg-primary: #ffffff;
   --bg-secondary: #F7F7F8;
 
+  --active-primary: #6534FF;
 }

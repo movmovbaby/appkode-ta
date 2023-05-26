@@ -1,13 +1,14 @@
 import { useMemo } from "react";
-import { UserItem } from "./UserItem";
-import { useGetUsersQuery } from "../api/UserService";
-import { CriticalError } from "./CriticalError";
-import { Spinner } from "./Spinner";
-import { UsersNotFound } from "./UsersNotFound";
-import { allUsers, dynamicUsers, serverError } from "../api/apiUrls";
-import { useAppSelector } from "../store/hooks";
-import { alphabeticSort, birthdaySort } from "../utils";
-import { usersObjectType } from "../utils";
+import { UserItem } from "../UserItem/UserItem";
+import { useGetUsersQuery } from "../../api/UserService";
+import { CriticalError } from "../CriticalError";
+import { Spinner } from "../Spinner";
+import { UsersNotFound } from "../UsersNotFound";
+import { allUsers, dynamicUsers, serverError } from "../../api/apiUrls";
+import { useAppSelector } from "../../store/hooks";
+import { alphabeticSort, birthdaySort } from "../../utils";
+import { usersObjectType } from "../../utils";
+import styles from "./UserList.module.css";
 
 export const UserList = (): JSX.Element => {
   /**
@@ -22,7 +23,7 @@ export const UserList = (): JSX.Element => {
    * выделить компоненты элементов списка, пропсами передавать тип сортировки для изменения отображения +
    * отсортировать по дате как указано в задании +
    */
-  const { data: users, error, isLoading } = useGetUsersQuery(dynamicUsers);
+  const { data: users, error, isLoading } = useGetUsersQuery(allUsers);
 
   const { inputFilter, departmentFilter, sort } = useAppSelector(
     (state) => state.sortAndFilter
@@ -82,8 +83,8 @@ export const UserList = (): JSX.Element => {
   const today = new Date();
   const nextYear = today.getFullYear() + 1;
   return (
-    <>
-      <ul>
+    <section className={styles.wrapper}>
+      <ul className={styles["user-list"]}>
         {filtredUsersObject.currentYear.map((user) => (
           <li key={user.id}>
             <UserItem user={user} sort={sort} />
@@ -92,8 +93,10 @@ export const UserList = (): JSX.Element => {
       </ul>
       {filtredUsersObject.nextYear.length === 0 ? null : (
         <>
-          <p>{nextYear}</p>
-          <ul>
+          <div className={styles["lines-container"]}>
+            <p className={styles.year}>{nextYear}</p>
+          </div>
+          <ul className={styles["user-list"]}>
             {filtredUsersObject.nextYear.map((user) => (
               <li key={user.id}>
                 <UserItem user={user} sort={sort} />
@@ -102,6 +105,6 @@ export const UserList = (): JSX.Element => {
           </ul>
         </>
       )}
-    </>
+    </section>
   );
 };

@@ -1,0 +1,76 @@
+.wrapper {
+  composes: wrapper from "/src/styles/utils.css";
+}
+
+.visually-hidden {
+  composes: visually-hidden from "/src/styles/utils.css";
+}
+
+.header {
+  margin: 16px 0 18px 8px;
+  font-size: 24px;
+  line-height: 28px
+}
+.form {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.input-label {
+  display: inline-block;
+  flex-grow: 1;
+  position: relative;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+
+.input-label input {
+  flex-grow: 1;
+  width: 100%;
+  appearance: none;
+  border: none;
+  border-radius: 16px;
+  height: 40px;
+  padding: 8px 12px;
+  background-color: var(--bg-secondary);
+  outline: none;
+  font-size: 15px;
+  padding-left: 44px;
+  caret-color: var(--active-primary);
+}
+
+.input-label .placeholder {
+  position: absolute;
+  left: 44px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  top: 20px;
+  line-height: 100%;
+  transform: translateY(-50%);
+  color: var(--content-secondary);
+}
+
+.search-button {
+  position: absolute;
+  border: none;
+  background: transparent;
+  top: 8px;
+  left: 12px;
+  width: 20px;
+  height: 20px;
+}
+
+.input-label input:valid + .placeholder,
+.input-label input:focus + .placeholder {
+  display: none;
+}
+
+.input-label input:focus > .search-icon {
+  /* fill: var(--text-primary); */
+  display: none;
+}

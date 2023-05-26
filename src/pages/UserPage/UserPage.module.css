@@ -1,13 +1,7 @@
 @import url('/src/styles/constants.css');
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  max-width: 1248px;
-  margin: 0 auto;
-  padding: 0 16px;
-  background-color: var(--bg-secondary);
+  composes: wrapper from "/src/styles/utils.css";
 }
 
 .bg-color-secondary {
@@ -96,6 +90,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
+  color: var(--text-tetriary);
 }
 
 .phone-container {

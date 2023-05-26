@@ -1,0 +1,52 @@
+.wrapper {
+  composes: wrapper from "/src/styles/utils.css";
+  padding-top: 25px;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.lines-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+}
+
+.lines-container::before {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 1px;
+  width: calc(50% - 100px);
+  left: 0;
+  top: 50%;
+  border-bottom: solid 1px var(--content-secondary)
+}
+
+.lines-container::after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 1px;
+  width: calc(50% - 100px);
+  right: 0;
+  top: 50%;
+  border-bottom: solid 1px var(--content-secondary)
+}
+
+.year {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--content-secondary);
+  text-align: center;
+  min-width: 200px;
+}

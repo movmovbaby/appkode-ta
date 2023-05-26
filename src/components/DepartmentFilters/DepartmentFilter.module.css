@@ -1,0 +1,22 @@
+.button-tab {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 36px;
+}
+
+.filter-button {
+  padding: 8px 12px;
+  color: var(--text-tetriary);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.filter-active {
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--active-primary);
+}
