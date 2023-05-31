@@ -1,16 +1,16 @@
 import { useMemo } from "react";
 import { UserItem } from "../UserItem/UserItem";
 import { useGetUsersQuery } from "../../api/UserService";
-import { CriticalError } from "../CriticalError";
-import { Spinner } from "../Spinner";
-import { UsersNotFound } from "../UsersNotFound";
-import { allUsers, dynamicUsers, serverError } from "../../api/apiUrls";
+import { CriticalError } from "../CriticalError/CriticalError";
+import { Loader } from "../Loader/Loader";
+import { UsersNotFound } from "../UsersNotFound/UsersNotFound";
+import { defaultUrl } from "../../api/apiUrls";
 import { useAppSelector } from "../../store/hooks";
 import { alphabeticSort, birthdaySort } from "../../utils";
 import { usersObjectType } from "../../utils";
 import styles from "./UserList.module.css";
 
-export const UserList = (): JSX.Element => {
+export const UserList = (): React.ReactElement => {
   /**
    * загрузить данные +
    * взять сортировку из стора -  слайс +
@@ -23,7 +23,7 @@ export const UserList = (): JSX.Element => {
    * выделить компоненты элементов списка, пропсами передавать тип сортировки для изменения отображения +
    * отсортировать по дате как указано в задании +
    */
-  const { data: users, error, isLoading } = useGetUsersQuery(allUsers);
+  const { data: users, error, isLoading } = useGetUsersQuery(defaultUrl);
 
   const { inputFilter, departmentFilter, sort } = useAppSelector(
     (state) => state.sortAndFilter
@@ -70,7 +70,7 @@ export const UserList = (): JSX.Element => {
   }
 
   if (isLoading || !users) {
-    return <Spinner />;
+    return <Loader />;
   }
 
   if (

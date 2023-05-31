@@ -2,16 +2,14 @@ import { useParams, Link } from "react-router-dom";
 import { Header } from "../../components/Layout/Header/Header";
 import { Main } from "../../components/Layout/Main/Main";
 import { useGetUsersQuery } from "../../api/UserService";
-import { allUsers, dynamicUsers } from "../../api/apiUrls";
+import { defaultUrl } from "../../api/apiUrls";
 import { fullFormatBirthday, getFullYearAge } from "../../utils";
 import styles from "./UserPage.module.css";
 
 export const UserPage = () => {
   const { userId } = useParams<string>();
-  const { data: users } = useGetUsersQuery(allUsers);
+  const { data: users } = useGetUsersQuery(defaultUrl);
 
-  // const { data: users } =
-  //   usersApi.endpoints.getUsers.useQueryState(dynamicUsers);
   const user = users?.filter((user) => user.id === userId)[0];
 
   if (user === undefined) {

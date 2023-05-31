@@ -1,8 +1,9 @@
 .button-tab {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   height: 36px;
+  overflow-x: scroll;
 }
 
 .filter-button {

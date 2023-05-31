@@ -1,5 +1,6 @@
 .wrapper {
   composes: wrapper from "/src/styles/utils.css";
+  position: relative;
 }
 
 .visually-hidden {

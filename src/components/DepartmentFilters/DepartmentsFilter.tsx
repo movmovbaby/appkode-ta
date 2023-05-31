@@ -3,7 +3,7 @@ import { useAppDispatch } from "../../store/hooks";
 import { sortFilterActions } from "../../store/sortFilterReducer";
 import styles from "./DepartmentFilter.module.css";
 
-export const DepartmentsFilter = (): JSX.Element => {
+export const DepartmentsFilter = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const [active, setActive] = useState<string>("all");
 

@@ -1,0 +1,52 @@
+.wrapper {
+  composes: wrapper from "/src/styles/utils.css";
+  padding-top: 25px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+
+.circle {
+  border-radius: 50%;
+  background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
+  width: 72px;
+  height: 72px;
+}
+
+.rects {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.long-rect {
+  background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
+  border-radius: 8px;
+  width: 144px;
+  height: 16px;
+}
+
+.short-rect {
+  background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
+  border-radius: 6px;
+  width: 80px;
+  height: 12px;
+}

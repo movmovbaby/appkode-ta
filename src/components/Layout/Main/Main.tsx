@@ -1,9 +1,9 @@
 import styles from "./Main.module.css";
 
 interface MainProps {
-  children?: JSX.Element | JSX.Element[];
+  children?: React.ReactElement | React.ReactElement[];
 }
 
-export const Main = ({ children }: MainProps): JSX.Element => {
-  return <main>{children}</main>;
+export const Main = ({ children }: MainProps): React.ReactElement => {
+  return <main className={styles.main}>{children}</main>;
 };

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../store/hooks";
-import { SortingModal } from "../SortingModal";
+import { SortingModal } from "../SortingModal/SortingModal";
 import { DepartmentsFilter } from "../DepartmentFilters/DepartmentsFilter";
 import { sortFilterActions } from "../../store/sortFilterReducer";
 import styles from "./TopAppBar.module.css";
 
-export const TopAppBar = (): JSX.Element => {
+export const TopAppBar = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const [text, setText] = useState<string>();
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -44,7 +44,7 @@ export const TopAppBar = (): JSX.Element => {
           </span>
         </label>
       </form>
-      {/* <SortingModal /> */}
+      <SortingModal />
       <DepartmentsFilter />
     </section>
   );

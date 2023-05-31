@@ -4,6 +4,6 @@ interface HeaderProps {
   title: string;
 }
 
-export const Header = ({ title }: HeaderProps): JSX.Element => {
+export const Header = ({ title }: HeaderProps): React.ReactElement => {
   return <header className={styles["visually-hidden"]}>{title}</header>;
 };

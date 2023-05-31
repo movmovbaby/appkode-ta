@@ -86,6 +86,25 @@ export const alphabeticSort = (user1: User, user2: User): -1 | 0 | 1 => {
   return 0;
 };
 
+const dayMonthSort = (a: User, b: User): -1 | 1 | 0 => {
+  const [_A, mA, dA] = a.birthday.split("-");
+  const monthA = parseInt(mA);
+  const dayA = parseInt(dA);
+
+  const [_B, mB, dB] = b.birthday.split("-");
+  const monthB = parseInt(mB);
+  const dayB = parseInt(dB);
+
+  if (monthA > monthB) return 1;
+  if (monthA < monthB) return -1;
+  if (monthA === monthB) {
+    if (dayA > dayB) return 1;
+    if (dayA < dayB) return -1;
+    if (dayA === dayB) return 0;
+  }
+  return 1;
+};
+
 export const birthdaySort = (users: User[] | undefined): usersObjectType => {
   if (users === undefined) {
     return { currentYear: [], nextYear: [] };
@@ -97,7 +116,7 @@ export const birthdaySort = (users: User[] | undefined): usersObjectType => {
 
   const acc: usersObjectType = { currentYear: [], nextYear: [] };
 
-  const currentYearUsers: usersObjectType = users.reduce((acc, user) => {
+  const currentUsers: usersObjectType = users.reduce((acc, user) => {
     const [_, m, d] = user.birthday.split("-");
     const month = parseInt(m);
     const day = parseInt(d);
@@ -113,5 +132,8 @@ export const birthdaySort = (users: User[] | undefined): usersObjectType => {
     return acc;
   }, acc);
 
-  return currentYearUsers;
+  currentUsers.currentYear.sort(dayMonthSort);
+  currentUsers.nextYear.sort(dayMonthSort);
+
+  return currentUsers;
 };
