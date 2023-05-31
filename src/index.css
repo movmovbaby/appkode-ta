@@ -3,8 +3,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  src: url('./styles/fonts/inter-v12-cyrillic_latin-regular.woff2') format('woff2'),
-    url('./styles/fonts/inter-v12-cyrillic_latin-regular.woff') format('woff');
+  src: url('./styles/fonts/inter-v12-cyrillic_latin-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -12,8 +11,15 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
-  src: url('./styles/fonts/inter-v12-cyrillic_latin-500.woff2') format('woff2'),
-    url('./styles/fonts/inter-v12-cyrillic_latin-500.woff') format('woff');
+  src: url('./styles/fonts/inter-v12-cyrillic_latin-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('./styles/fonts/inter-v12-cyrillic_latin-600.woff2') format('woff2');
 }
 
 @font-face {
@@ -21,8 +27,15 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  src: url('./styles/fonts/inter-v12-cyrillic_latin-700.woff2') format('woff2'),
-    url('./styles/fonts/inter-v12-cyrillic_latin-700.woff') format('woff');
+  src: url('./styles/fonts/inter-v12-cyrillic_latin-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  src: url('./styles/fonts/inter-v12-cyrillic_latin-800.woff2') format('woff2');
 }
 
 .page {
@@ -34,6 +47,7 @@
 body {
   margin: 0;
   padding: 0;
+  
 }
 
 *, *::after, *::before {
